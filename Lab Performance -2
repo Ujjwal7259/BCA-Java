@@ -1,12 +1,119 @@
 Task-1:
 
-Imagine you are developing a Java application for a car rental agency. In this system, you have a class called Vehicle representing general properties and behaviors of vehicles.
-Additionally, you have a subclass called Car, which extends the Vehicle class and adds specific features related to cars, such as the number of doors and the type of fuel.
-While implementing methods in the Car class, you find yourself needing to differentiate between local variables, instance variables, and superclass variables.
-1.	Explain the role and usage of the super keyword in Java. Provide examples illustrating how super can be used to access superclass members and invoke superclass constructors within a subclass like Car.
-2.	Describe the significance of the this keyword in Java and how it differs from super. 
-Give examples demonstrating the use of this to refer to instance variables and methods within the same class, and discuss scenarios where using this is necessary for disambiguation or clarification.
 
-Task-2: 
-a.	Recall the basic principles of exception handling in Java, give example of try-catch blocks and the handling of checked exception. 
-b.  Write a program to demonstrate Interface and implements multiple interface in a java.
+QUESTION 1)
+package index;
+class Vehicle {
+    String brand;
+
+    Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void displayBrand() {
+        System.out.println("Brand: " + brand);
+    }
+}
+
+public class Car extends Vehicle {
+    int numberOfDoors;
+
+    public Car(String brand, int numberOfDoors) {
+        super(brand);
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public void displayDetails() {
+        System.out.println("Brand: " + getBrand());
+        System.out.println("Number of Doors: " + numberOfDoors);
+    }
+
+    public static void main(String[] args) {
+        Car ob = new Car("Toyota", 4);
+        ob.displayDetails();
+        ob.displayBrand();
+    }
+}
+
+QUESTION 2)
+
+
+package index;
+
+class Car1 {
+    int numberOfDoors;
+    String color;
+    public Car1(String color, int numberOfDoors) {
+        this.color=color ; 
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public void displayDetails() {
+        System.out.println("Color: "+color); 
+        System.out.println("Number of Doors: " + numberOfDoors);
+    }
+
+    public static void main(String[] args) {
+        Car1 ob = new Car1("Red", 4);
+        ob.displayDetails(); 
+    }
+}
+
+
+
+TASK:-2
+
+QUESTION 1)
+
+
+package index;
+
+public class Excecption {
+    int a = 5;
+    
+    void calculate() {
+        try {
+            int n = a / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        Excecption ob = new Excecption();
+        ob.calculate();
+    }
+}
+
+QUESTION-2)
+
+package index;
+interface Interface1 {
+    void method1();
+}
+
+interface Interface2 {
+    void method2();
+}
+
+class MyClass implements Interface1, Interface2 {
+    public void method1() {
+        System.out.println("Method 1 implementation");
+    }
+
+    public void method2() {
+        System.out.println("Method 2 implementation");
+    }
+}
+
+public class Interface {
+    public static void main(String[] args) {
+        MyClass ob = new MyClass();
+        ob.method1();
+        ob.method2();
+    }
+}
